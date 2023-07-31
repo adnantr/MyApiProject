@@ -15,32 +15,32 @@ namespace HotelProject.WebApi.Controllers
             _subscribeService = subscribeService;
         }
         [HttpGet]
-        public IActionResult RoomList()
+        public IActionResult SubscribeList()
         {
             var values = _subscribeService.TGetList();
             return Ok(values);
         }
         [HttpPost]
-        public IActionResult AddRoom(Subscribe subscribe)
+        public IActionResult AddSubscribe(Subscribe subscribe)
         {
             _subscribeService.TInsert(subscribe);
             return Ok();
         }
-        [HttpDelete]
-        public IActionResult DeleteRoom(int id)
+        [HttpDelete("{id}")]
+        public IActionResult DeleteSubscribe(int id)
         {
             var values = _subscribeService.TGetByID(id);
             _subscribeService.TDelete(values);
             return Ok();
         }
         [HttpPut]
-        public IActionResult UpdateRoom(Subscribe subscribe)
+        public IActionResult UpdateSubscribe(Subscribe subscribe)
         {
             _subscribeService.TUpdate(subscribe);
             return Ok();
         }
         [HttpGet("{id}")]
-        public IActionResult GetRoom(int id)
+        public IActionResult GetSubscribe(int id)
         {
             var values = _subscribeService.TGetByID(id);
             return Ok(values);

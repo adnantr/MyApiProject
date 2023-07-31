@@ -15,32 +15,32 @@ namespace HotelProject.WebApi.Controllers
             _testimonialService = testimonialService;
         }
         [HttpGet]
-        public IActionResult RoomList()
+        public IActionResult TestimonialList()
         {
             var values = _testimonialService.TGetList();
             return Ok(values);
         }
         [HttpPost]
-        public IActionResult AddRoom(Testimonial testimonial)
+        public IActionResult AddTestimonial(Testimonial testimonial)
         {
             _testimonialService.TInsert(testimonial);
             return Ok();
         }
-        [HttpDelete]
-        public IActionResult DeleteRoom(int id)
+        [HttpDelete("{id}")]
+        public IActionResult DeleteTestimonial(int id)
         {
             var values = _testimonialService.TGetByID(id);
             _testimonialService.TDelete(values);
             return Ok();
         }
         [HttpPut]
-        public IActionResult UpdateRoom(Testimonial testimonial)
+        public IActionResult UpdateTestimonial(Testimonial testimonial)
         {
             _testimonialService.TUpdate(testimonial);
             return Ok();
         }
         [HttpGet("{id}")]
-        public IActionResult GetRoom(int id)
+        public IActionResult GetTestimonial(int id)
         {
             var values = _testimonialService.TGetByID(id);
             return Ok(values);
